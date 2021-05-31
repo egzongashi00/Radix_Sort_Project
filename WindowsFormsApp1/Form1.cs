@@ -17,15 +17,15 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        public static int getMax(int[] arr, int n){
-            int mx = arr[0];
+        public static int merreMaksimumin(int[] vektori, int n){
+            int max = vektori[0];
             for (int i = 1; i < n; i++)
-                if (arr[i] > mx)
-                    mx = arr[i];
-            return mx;
+                if (vektori[i] > max)
+                    max = vektori[i];
+            return max;
         }
 
-        public static void countSort(int[] arr, int n, int exp){
+        public static void countSort(int[] vektori, int n, int exp){
             int[] output = new int[n];
             int i;
             int[] count = new int[10];
@@ -34,26 +34,26 @@ namespace WindowsFormsApp1
                 count[i] = 0;
 
             for (i = 0; i < n; i++)
-                count[(arr[i] / exp) % 10]++;
+                count[(vektori[i] / exp) % 10]++;
 
             for (i = 1; i < 10; i++)
                 count[i] += count[i - 1];
 
             for (i = n - 1; i >= 0; i--){
-                output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-                count[(arr[i] / exp) % 10]--;
+                output[count[(vektori[i] / exp) % 10] - 1] = vektori[i];
+                count[(vektori[i] / exp) % 10]--;
             }
 
             for (i = 0; i < n; i++)
-                arr[i] = output[i];
+                vektori[i] = output[i];
         }
 
-        public static void radixsort(int[] arr, int n){
+        public static void radixsort(int[] vektori, int n){
 
-            int m = getMax(arr, n);
+            int m = merreMaksimumin(vektori, n);
 
             for (int exp = 1; m / exp > 0; exp *= 10)
-                countSort(arr, n, exp);
+                countSort(vektori, n, exp);
         }
 
         private void button1_Click(object sender, EventArgs e){
