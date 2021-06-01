@@ -58,6 +58,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e){
             var watch = System.Diagnostics.Stopwatch.StartNew();
+            watch.Start();
 
             string ArrayString = textBox1.Text;
             string[] ArrayInt = ArrayString.Split(',');
